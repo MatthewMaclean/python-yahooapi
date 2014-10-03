@@ -2,6 +2,7 @@ from rauth import OAuth1Service
 from rauth.utils import parse_utf8_qsl
 import pickle
 import time
+import webbrowser
 
 class YahooAPI:
     # access token lifetime in seconds
@@ -59,6 +60,7 @@ class YahooAPI:
             authorize_url = self.oauth.get_authorize_url(request_token)
 
             print "Sign in here: " + str(authorize_url)
+            webbrowser.open(str(authorize_url))
             verification_code = raw_input("Enter code: ")
 
             self.access_token_time = time.time()
